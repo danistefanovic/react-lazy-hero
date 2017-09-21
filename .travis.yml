@@ -16,3 +16,4 @@ cache:
   bundler: true
   directories:
     - node_modules
+    - website/node_modules
