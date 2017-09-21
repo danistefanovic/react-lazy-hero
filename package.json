@@ -36,9 +36,14 @@
   "keywords": [
     "react",
     "hero",
+    "header",
     "jumbotron",
     "parallax",
-    "lazy"
+    "lazy",
+    "image-preloading",
+    "fade-in",
+    "component",
+    "color overlay"
   ],
   "repository": {
     "type": "git",
