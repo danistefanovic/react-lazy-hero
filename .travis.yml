@@ -6,7 +6,6 @@ node_js:
 script:
   - node --version
   - yarn --version
-  - yarn install --cwd website
   - yarn run test:all
 notifications:
   email:
@@ -16,4 +15,3 @@ cache:
   bundler: true
   directories:
     - node_modules
-    - website/node_modules

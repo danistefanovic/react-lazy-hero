@@ -1,0 +1,6 @@
+{
+    "rules": {
+        "import/extensions": 1,
+        "import/no-unresolved": 1
+    }
+}
