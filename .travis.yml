@@ -6,6 +6,7 @@ node_js:
 script:
   - node --version
   - yarn --version
+  - yarn install --cwd website
   - yarn run test:all
 notifications:
   email:

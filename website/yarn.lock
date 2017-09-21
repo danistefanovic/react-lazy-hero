@@ -3354,6 +3354,10 @@ imurmurhash@^0.1.4:
   version "0.1.4"
   resolved "https://registry.yarnpkg.com/imurmurhash/-/imurmurhash-0.1.4.tgz#9218b9b2b928a238b13dc4fb6b6d576f231453ea"
 
+in-viewport@^3.5.0:
+  version "3.5.0"
+  resolved "https://registry.yarnpkg.com/in-viewport/-/in-viewport-3.5.0.tgz#28bad42e29e8c89d71386f9847aac9fca527b81a"
+
 indent-string@^2.1.0:
   version "2.1.0"
   resolved "https://registry.yarnpkg.com/indent-string/-/indent-string-2.1.0.tgz#8e2d48348742121b4a8218b7a137e9a52049dc80"
@@ -5572,6 +5576,16 @@ react-ga@^2.2.0:
     create-react-class "^15.5.2"
     object-assign "^4.0.1"
     prop-types "^15.5.6"
+
+react-lazy-hero@^0.0.0:
+  version "0.0.0"
+  resolved "https://registry.yarnpkg.com/react-lazy-hero/-/react-lazy-hero-0.0.0.tgz#3be9c3bff05055ff56f15dfc8759e1fe335907cf"
+  dependencies:
+    color "^2.0.0"
+    in-viewport "^3.5.0"
+    prop-types "^15.5.10"
+    react "^15.6.1"
+    styled-components "^2.1.2"
 
 react-scripts@1.0.13:
   version "1.0.13"
