@@ -1,0 +1,13 @@
+{
+    "extends": "airbnb",
+    "rules": {
+        "indent": [2, 4],
+        "no-mixed-operators": [2, { "allowSamePrecedence": true }],
+        "react/jsx-filename-extension": [2, { "extensions": [".js"] }],
+        "react/jsx-indent": [2, 4],
+        "react/jsx-indent-props": [2, 4]
+    },
+    "env": {
+        "browser": true
+    }
+}

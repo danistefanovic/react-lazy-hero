@@ -1,0 +1,47 @@
+{
+  "name": "react-lazy-hero",
+  "version": "0.0.0",
+  "description": "Lazy loading with overlays for hero images",
+  "homepage": "http://react-lazy-hero.danielstefanovic.com",
+  "main": "lib/index.js",
+  "author": "Daniel Stefanovic",
+  "license": "MIT",
+  "scripts": {
+    "build": "rimraf lib && babel src --out-dir lib",
+    "lint": "eslint ./",
+    "prepublish": "yarn build",
+    "preversion": "yarn build && yarn test:all",
+    "postversion": "git push && git push --tags",
+    "test:all": "yarn lint"
+  },
+  "dependencies": {
+    "color": "^2.0.0",
+    "in-viewport": "^3.5.0",
+    "prop-types": "^15.5.10",
+    "react": "^15.6.1",
+    "styled-components": "^2.1.2"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
+    "babel-preset-env": "^1.6.0",
+    "babel-preset-react": "^6.24.1",
+    "eslint": "^4.7.1",
+    "eslint-config-airbnb": "^15.1.0",
+    "eslint-plugin-import": "^2.7.0",
+    "eslint-plugin-jsx-a11y": "^5.1.1",
+    "eslint-plugin-react": "^7.3.0",
+    "rimraf": "^2.6.2"
+  },
+  "keywords": [
+    "react",
+    "hero",
+    "jumbotron",
+    "parallax",
+    "lazy"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/danistefanovic/react-lazy-hero.git"
+  }
+}
