@@ -13,8 +13,6 @@ const Root = styled.div`
     background-color: #fff;
     box-shadow: 0 0 3px rgba(0, 0, 0, 0.12);
     padding: 10px;
-
-    height: 50px;
 `;
 
 const Link = styled.span`
