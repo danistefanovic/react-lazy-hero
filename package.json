@@ -1,7 +1,7 @@
 {
   "name": "react-lazy-hero",
   "version": "0.0.0",
-  "description": "Lazy loading with overlays for hero images",
+  "description": "A hero component for React with image-preloading and parallax",
   "homepage": "http://react-lazy-hero.danielstefanovic.com",
   "main": "lib/index.js",
   "author": "Daniel Stefanovic",
