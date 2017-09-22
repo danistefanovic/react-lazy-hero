@@ -9,7 +9,7 @@
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
     "react-ga": "^2.2.0",
-    "react-lazy-hero": "^0.1.0",
+    "react-lazy-hero": "^0.2.0",
     "recompose": "^0.25.0",
     "styled-components": "^2.1.2"
   },
