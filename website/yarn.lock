@@ -5577,9 +5577,9 @@ react-ga@^2.2.0:
     object-assign "^4.0.1"
     prop-types "^15.5.6"
 
-react-lazy-hero@^0.0.0:
-  version "0.0.0"
-  resolved "https://registry.yarnpkg.com/react-lazy-hero/-/react-lazy-hero-0.0.0.tgz#3be9c3bff05055ff56f15dfc8759e1fe335907cf"
+react-lazy-hero@^0.1.0:
+  version "0.1.0"
+  resolved "https://registry.yarnpkg.com/react-lazy-hero/-/react-lazy-hero-0.1.0.tgz#e0044c50d8d710a6de23c849b1b89b40bdf2005e"
   dependencies:
     color "^2.0.0"
     in-viewport "^3.5.0"

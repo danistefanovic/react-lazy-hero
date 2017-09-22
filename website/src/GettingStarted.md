@@ -7,7 +7,10 @@
 yarn add react-lazy-hero
 ```
 
-Or alternatively via npm: `npm i --save react-lazy-hero`
+Or alternatively via npm:
+```sh
+npm i --save react-lazy-hero
+```
 
 
 ## Basic Usage

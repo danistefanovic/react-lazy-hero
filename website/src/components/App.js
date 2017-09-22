@@ -21,9 +21,9 @@ function App(props) {
                 key={props.id}
                 minHeight={props.knobs.minHeight.current}
                 opacity={props.knobs.opacity.current}
-                parallaxSpeed={props.knobs.parallaxSpeed.current}
+                parallaxOffset={parseInt(props.knobs.parallaxOffset.current, 10)}
                 style={{ overflow: 'hidden' }}
-                transitionDuration={props.knobs.transitionDuration.current}
+                transitionDuration={parseInt(props.knobs.transitionDuration.current, 10)}
                 transitionTimingFunction={props.knobs.transitionTimingFunction.current}
             >
                 <Logo />
@@ -99,12 +99,12 @@ const enhance = compose(
             step: 0.1,
             type: 'number',
         },
-        parallaxSpeed: {
-            current: 0.1,
+        parallaxOffset: {
+            current: 100,
             default: 0,
-            description: 'Speed at which the parallax effect runs. 0 means that the effect is inactive.',
+            description: 'Offset that is added to the hero height so that a parallax effect is generated. 0 means that the effect is inactive.',
             min: 0,
-            step: 0.1,
+            step: 50,
             type: 'number',
         },
         style: {
@@ -128,12 +128,15 @@ const enhance = compose(
         },
     }),
     withHandlers({
-        onKnobChange: ({ knobs, setKnobs }) =>
-            (name, current) => setKnobs({
-                ...knobs,
-                [name]: { ...knobs[name], current },
-            }),
         onReload: ({ setId }) => () => setId(Date.now()),
+        onKnobChange: ({ knobs, setId, setKnobs }) =>
+            (name, current) => {
+                setKnobs({
+                    ...knobs,
+                    [name]: { ...knobs[name], current },
+                });
+                setId(Date.now());
+            },
     }),
 );
 
