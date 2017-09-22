@@ -3,7 +3,7 @@
 **React-lazy-hero** is a flexible hero component for React with image preloading, a fade-in effect, a semi-transparent color overlay and an optional parallax effect.
 
 <p align="center">
-    <img src="media/screencast.gif" width="800" />
+    <img src="media/screencast.gif" width="700" />
 </p>
 
 
