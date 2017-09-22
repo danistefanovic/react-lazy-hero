@@ -1,4 +1,4 @@
-# react-lazy-hero
+# [react-lazy-hero](http://react-lazy-hero.danielstefanovic.com/)
 
 **React-lazy-hero** is a flexible hero component for React with image preloading, a fade-in effect, a semi-transparent color overlay and an optional parallax effect.
 
