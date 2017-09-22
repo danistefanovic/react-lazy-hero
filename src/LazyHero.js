@@ -4,6 +4,8 @@ import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import styled from 'styled-components';
 
+import { resizeToCover, scrolledOverPercent } from './utils';
+
 const Cover = styled.div`
     position: absolute;
     top: 0;
@@ -19,10 +21,10 @@ const Root = styled.div`
 
 const Img = styled(Cover)`
     background-attachment: ${props => (props.isFixed ? 'fixed' : 'scroll')};
-    background-position: center center;
-    background-repeat: no-repeat;
-    background-size: cover;
     background-image: url(${(props => props.src)});
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: ${props => (props.width ? `${props.width}px ${props.height}px` : 'cover')};
     opacity: ${props => (props.isVisible ? 1 : 0)};
     transition-duration: ${props => `${props.transitionDuration}ms`};
     transition-property: opacity;
@@ -41,11 +43,16 @@ class LazyHero extends Component {
     constructor() {
         super();
         this.state = {
+            backgroundPositionY: 'center',
+            backgroundDimensions: null,
+            heroDimensions: null,
             image: null,
             isInViewport: false,
-            position: 'center',
         };
-        this.handlePositionChange = this.handlePositionChange.bind(this);
+        this.handleResize = this.handleResize.bind(this);
+        this.handleScroll = this.handleScroll.bind(this);
+        this.updatePosition = this.updatePosition.bind(this);
+        this.updateSize = this.updateSize.bind(this);
     }
 
     componentDidMount() {
@@ -55,47 +62,77 @@ class LazyHero extends Component {
         image.src = this.props.imageSrc;
         image.onload = () => {
             this.setState({ image });
-            this.handlePositionChange();
+
+            if (this.props.parallaxOffset > 0) {
+                this.updateSize();
+                this.updatePosition();
+            }
         };
 
-        if (this.props.parallaxSpeed > 0) {
-            window.addEventListener('scroll', this.handlePositionChange);
-            window.addEventListener('resize', this.handlePositionChange);
+        if (this.props.parallaxOffset > 0) {
+            window.addEventListener('scroll', this.handleScroll);
+            window.addEventListener('resize', this.handleResize);
         }
     }
 
     componentWillUnmount() {
-        if (this.props.parallaxSpeed > 0) {
-            window.removeEventListener('scroll', this.handlePositionChange);
-            window.removeEventListener('resize', this.handlePositionChange);
+        if (this.props.parallaxOffset > 0) {
+            window.removeEventListener('scroll', this.handleScroll);
+            window.removeEventListener('resize', this.handleResize);
         }
     }
 
-    handlePositionChange() {
-        if (!this.state.image || !(this.props.parallaxSpeed > 0)) return;
+    handleScroll() {
+        this.updatePosition();
+    }
 
-        window.requestAnimationFrame(() => {
-            const { image } = this.state;
-            const scrolled = window.pageYOffset;
-            const heroWidth = this.ref.offsetWidth;
-            const heroHeight = this.ref.offsetHeight;
-            const parallaxOffset = scrolled * this.props.parallaxSpeed;
-            // Image height when it's scaled up/down to have the same width as the hero component
-            const scaledHeight = image.height / image.width * heroWidth;
-            // Get the current image height based on the proportion
-            const actualImageHeight = scaledHeight > heroHeight ? scaledHeight : heroHeight;
-            // Calculate the BG position so that it's slightly under the center line
-            const position = (heroHeight / 3) - (actualImageHeight / 2) + parallaxOffset;
-            // Do not scroll above the image border
-            const finalPosition = position < 0 ? position : 0;
-            this.setState({ position: `${Math.round(finalPosition)}px` });
-        });
+    handleResize() {
+        this.updateSize();
+        this.updatePosition();
+    }
+
+    updateSize() {
+        if (!this.state.image) return;
+
+        const heroDimensions = {
+            height: this.ref.offsetHeight,
+            width: this.ref.offsetWidth,
+        };
+
+        const imageDimensions = {
+            height: this.state.image.height,
+            width: this.state.image.width,
+        };
+
+        const resizedImage = resizeToCover(imageDimensions, heroDimensions);
+        const initialVisibleImageHeight = resizedImage.height - this.props.parallaxOffset;
+
+        const minHeight = initialVisibleImageHeight < heroDimensions.height
+            ? resizedImage.height + heroDimensions.height - initialVisibleImageHeight
+            : resizedImage.height;
+
+        const finalHeight = minHeight + (this.ref.offsetTop * 2);
+
+        const backgroundDimensions = resizeToCover(imageDimensions, { height: finalHeight });
+        this.setState({ backgroundDimensions, heroDimensions });
+    }
+
+    updatePosition() {
+        if (!this.state.backgroundDimensions) return;
+        const position = 0
+            + this.ref.offsetTop
+            // Center image vertically
+            - (this.state.backgroundDimensions.height / 2)
+            + (this.state.heroDimensions.height / 2)
+            - (this.props.parallaxOffset / 2)
+            // Apply scroll position
+            + (this.props.parallaxOffset * scrolledOverPercent(this.ref));
+
+        this.setState({ backgroundPositionY: `${Math.round(position)}px` });
     }
 
     render() {
-        const imageStyle = {
-            backgroundPosition: `center ${this.state.position}`,
-        };
+        const { backgroundDimensions, backgroundPositionY } = this.state;
 
         return (
             <Root
@@ -105,19 +142,20 @@ class LazyHero extends Component {
                 style={this.props.style}
             >
                 <Img
+                    height={backgroundDimensions && backgroundDimensions.height}
                     isVisible={this.state.image && this.state.isInViewport}
-                    isFixed={this.props.isFixed || this.props.parallaxSpeed > 0}
+                    isFixed={this.props.isFixed || this.props.parallaxOffset > 0}
                     src={this.props.imageSrc}
-                    style={imageStyle}
+                    style={{ backgroundPositionY }}
                     transitionDuration={this.props.transitionDuration}
                     transitionTimingFunction={this.props.transitionTimingFunction}
+                    width={backgroundDimensions && backgroundDimensions.width}
                 />
                 <Overlay
                     color={this.props.color}
                     isCentered={this.props.isCentered}
                     opacity={this.props.opacity}
                 >
-
                     {this.props.children && <div>{this.props.children}</div>}
                 </Overlay>
             </Root>
@@ -134,8 +172,7 @@ LazyHero.defaultProps = {
     isFixed: false,
     minHeight: '50vh',
     opacity: 0.8,
-    parallaxSpeed: 0,
-    scrollIconColor: 'rgba(0, 0, 0, 0.4)',
+    parallaxOffset: 0,
     style: undefined,
     transitionDuration: 600,
     transitionTimingFunction: 'ease-in-out',
@@ -150,7 +187,7 @@ LazyHero.propTypes = {
     isFixed: PropTypes.bool,
     minHeight: PropTypes.string,
     opacity: PropTypes.number,
-    parallaxSpeed: PropTypes.number,
+    parallaxOffset: PropTypes.number,
     style: PropTypes.object, // eslint-disable-line react/forbid-prop-types
     transitionDuration: PropTypes.number,
     transitionTimingFunction: PropTypes.string,
