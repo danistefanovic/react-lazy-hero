@@ -5,6 +5,14 @@
 
 [HEAD]: https://github.com/danistefanovic/react-lazy-hero/compare/v0.2.0...HEAD
 
+## [v0.2.1]
+> Sep 23, 2017
+
+- Moved react to peerDependencies ([9d4e7bc])
+
+[v0.2.1]: https://github.com/danistefanovic/hooka/compare/v0.2.0...v0.2.1
+[9d4e7bc]: https://github.com/danistefanovic/react-lazy-hero/commit/9d4e7bc826c84310289dc7db5e99d71c6eae2044
+
 ## [v0.2.0]
 > Sep 22, 2017
 
