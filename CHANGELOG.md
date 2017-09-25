@@ -10,7 +10,7 @@
 
 - Moved react to peerDependencies ([9d4e7bc])
 
-[v0.2.1]: https://github.com/danistefanovic/hooka/compare/v0.2.0...v0.2.1
+[v0.2.1]: https://github.com/danistefanovic/react-lazy-hero/compare/v0.2.0...v0.2.1
 [9d4e7bc]: https://github.com/danistefanovic/react-lazy-hero/commit/9d4e7bc826c84310289dc7db5e99d71c6eae2044
 
 ## [v0.2.0]
@@ -20,7 +20,7 @@
 - Added support for top offsets ([#2])
 - Improved demo website
 
-[v0.2.0]: https://github.com/danistefanovic/hooka/compare/v0.1.0...v0.2.0
+[v0.2.0]: https://github.com/danistefanovic/react-lazy-hero/compare/v0.1.0...v0.2.0
 [#2]: https://github.com/danistefanovic/hooka/issues/2
 
 ## [v0.1.0]
