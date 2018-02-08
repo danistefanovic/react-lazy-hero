@@ -3,7 +3,18 @@
 
 - No changes
 
-[HEAD]: https://github.com/danistefanovic/react-lazy-hero/compare/v0.2.0...HEAD
+[HEAD]: https://github.com/danistefanovic/react-lazy-hero/compare/v0.4.0...HEAD
+
+## [v0.4.0]
+> Feb 08, 2018
+
+- Update image when imageSrc is changed ([9d4e7bc])
+- Support React v16 ([#4])
+
+[v0.4.0]: https://github.com/danistefanovic/react-lazy-hero/compare/v0.2.1...v0.4.0
+[709fee9]: https://github.com/danistefanovic/react-lazy-hero/commit/709fee97711659ba61355955510c14eeaa9bb78a
+[#4]: https://github.com/danistefanovic/react-lazy-hero/pull/4
+
 
 ## [v0.2.1]
 > Sep 23, 2017
