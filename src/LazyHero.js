@@ -2,7 +2,7 @@ import Color from 'color';
 import inViewport from 'in-viewport';
 import PropTypes from 'prop-types';
 // React is a peer dependency
-// eslint-disable-next-line import/no-unresolved
+// eslint-disable-next-line import/no-unresolved, import/extensions
 import React, { Component } from 'react';
 import styled from 'styled-components';
 import { resizeToCover, scrolledOverPercent } from './utils';
