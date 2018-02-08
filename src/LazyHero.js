@@ -57,21 +57,17 @@ class LazyHero extends Component {
 
     componentDidMount() {
         inViewport(this.ref, () => this.setState({ isInViewport: true }));
-
-        const image = new Image();
-        image.src = this.props.imageSrc;
-        image.onload = () => {
-            this.setState({ image });
-
-            if (this.props.parallaxOffset > 0) {
-                this.updateSize();
-                this.updatePosition();
-            }
-        };
+        this.loadImage();
 
         if (this.props.parallaxOffset > 0) {
             window.addEventListener('scroll', this.handleScroll);
             window.addEventListener('resize', this.handleResize);
+        }
+    }
+
+    componentDidUpdate(prevProps) {
+        if (prevProps.imageSrc !== this.props.imageSrc) {
+            this.loadImage();
         }
     }
 
@@ -89,6 +85,19 @@ class LazyHero extends Component {
     handleResize() {
         this.updateSize();
         this.updatePosition();
+    }
+
+    loadImage() {
+        const image = new Image();
+        image.src = this.props.imageSrc;
+        image.onload = () => {
+            this.setState({ image });
+
+            if (this.props.parallaxOffset > 0) {
+                this.updateSize();
+                this.updatePosition();
+            }
+        };
     }
 
     updateSize() {
