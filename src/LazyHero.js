@@ -4,6 +4,8 @@ import PropTypes from 'prop-types';
 // React is a peer dependency
 // eslint-disable-next-line import/no-unresolved, import/extensions
 import React, { Component } from 'react';
+// styled-components is a peer dependency
+// eslint-disable-next-line import/no-unresolved, import/extensions
 import styled from 'styled-components';
 import { resizeToCover, scrolledOverPercent } from './utils';
 
