@@ -17,8 +17,7 @@
   "dependencies": {
     "color": "^2.0.0",
     "in-viewport": "^3.5.0",
-    "prop-types": "^15.5.10",
-    "styled-components": "^2.1.2"
+    "prop-types": "^15.5.10"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
@@ -33,7 +32,8 @@
     "rimraf": "^2.6.2"
   },
   "peerDependencies": {
-    "react": "^0.14.0 || ^16.0.0-0"
+    "react": "^0.14.0 || ^16.0.0-0",
+    "styled-components": "^2.1.2"
   },
   "keywords": [
     "react",
