@@ -3,7 +3,17 @@
 
 - No changes
 
-[HEAD]: https://github.com/danistefanovic/react-lazy-hero/compare/v0.4.0...HEAD
+[HEAD]: https://github.com/danistefanovic/react-lazy-hero/compare/v1.0.0...HEAD
+
+
+## [v1.0.0]
+> Sep 26, 2018
+
+- Moved styled-components to peerDependencies ([#10])
+
+[v1.0.0]: https://github.com/danistefanovic/react-lazy-hero/compare/v0.4.0...v1.0.0
+[#10]: https://github.com/danistefanovic/react-lazy-hero/pull/10
+
 
 ## [v0.4.0]
 > Feb 08, 2018
