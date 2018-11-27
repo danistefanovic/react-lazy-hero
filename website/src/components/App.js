@@ -1,7 +1,9 @@
 import React from 'react';
 import LazyHero from 'react-lazy-hero';
 import PropTypes from 'prop-types';
-import { compose, pure, withHandlers, withState } from 'recompose';
+import {
+    compose, pure, withHandlers, withState,
+} from 'recompose';
 
 import heroImage from '../mountains.jpg';
 import Footer from './Footer';
@@ -129,8 +131,8 @@ const enhance = compose(
     }),
     withHandlers({
         onReload: ({ setId }) => () => setId(Date.now()),
-        onKnobChange: ({ knobs, setId, setKnobs }) =>
-            (name, current) => {
+        onKnobChange:
+            ({ knobs, setId, setKnobs }) => (name, current) => {
                 setKnobs({
                     ...knobs,
                     [name]: { ...knobs[name], current },

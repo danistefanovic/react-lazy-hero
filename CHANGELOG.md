@@ -3,7 +3,14 @@
 
 - No changes
 
-[HEAD]: https://github.com/danistefanovic/react-lazy-hero/compare/v1.0.0...HEAD
+[HEAD]: https://github.com/danistefanovic/react-lazy-hero/compare/v2.0.0...HEAD
+
+## [v2.0.0]
+> Nov 27, 2018
+
+- Upgrade to styled-components v4
+
+[v2.0.0]: https://github.com/danistefanovic/react-lazy-hero/compare/v1.0.0...v2.0.0
 
 
 ## [v1.0.0]

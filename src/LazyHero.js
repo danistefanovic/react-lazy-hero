@@ -24,10 +24,10 @@ const Root = styled.div`
 
 const Img = styled(Cover)`
     background-attachment: ${props => (props.isFixed ? 'fixed' : 'scroll')};
-    background-image: url(${(props => props.src)});
+    background-image: url(${(props => props.imageSrc)});
     background-position: center;
     background-repeat: no-repeat;
-    background-size: ${props => (props.width ? `${props.width}px ${props.height}px` : 'cover')};
+    background-size: ${props => (props.imageWidth ? `${props.imageWidth}px ${props.imageHeight}px` : 'cover')};
     opacity: ${props => (props.isVisible ? 1 : 0)};
     transition-duration: ${props => `${props.transitionDuration}ms`};
     transition-property: opacity;
@@ -149,19 +149,19 @@ class LazyHero extends Component {
         return (
             <Root
                 className={this.props.className}
-                innerRef={(r) => { this.ref = r; }}
+                ref={(r) => { this.ref = r; }}
                 minHeight={this.props.minHeight}
                 style={this.props.style}
             >
                 <Img
-                    height={backgroundDimensions && backgroundDimensions.height}
                     isVisible={this.state.image && this.state.isInViewport}
                     isFixed={this.props.isFixed || this.props.parallaxOffset > 0}
-                    src={this.props.imageSrc}
+                    imageHeight={backgroundDimensions && backgroundDimensions.height}
+                    imageSrc={this.props.imageSrc}
+                    imageWidth={backgroundDimensions && backgroundDimensions.width}
                     style={{ backgroundPositionY }}
                     transitionDuration={this.props.transitionDuration}
                     transitionTimingFunction={this.props.transitionTimingFunction}
-                    width={backgroundDimensions && backgroundDimensions.width}
                 />
                 <Overlay
                     color={this.props.color}

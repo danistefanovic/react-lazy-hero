@@ -41,9 +41,7 @@ function MenuBar(props) {
                 </Link>
             </Container>
 
-            {props.areKnobsVisible &&
-                <Knobs knobs={props.knobs} onChange={props.onKnobChange} />
-            }
+            {props.areKnobsVisible && <Knobs knobs={props.knobs} onChange={props.onKnobChange} />}
         </Root>
     );
 }
@@ -59,8 +57,8 @@ MenuBar.propTypes = {
 const enhance = compose(
     withState('areKnobsVisible', 'setAreKnobsVisible', false),
     withHandlers({
-        onKnobsMenuClick: ({ areKnobsVisible, setAreKnobsVisible }) =>
-            () => setAreKnobsVisible(!areKnobsVisible),
+        onKnobsMenuClick:
+            ({ areKnobsVisible, setAreKnobsVisible }) => () => setAreKnobsVisible(!areKnobsVisible),
     }),
 );
 

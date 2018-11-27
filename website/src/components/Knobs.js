@@ -47,7 +47,9 @@ function Knobs(props) {
                 onChange={e => props.onChange(name, e.target.checked)}
             />
         ),
-        number: ({ current, max, min, name, step }) => (
+        number: ({
+            current, max, min, name, step,
+        }) => (
             <Input
                 type="number"
                 defaultValue={current}
