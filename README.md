@@ -10,7 +10,7 @@
 ## Installation
 
 ```sh
-yarn add react-lazy-hero
+yarn add react-lazy-hero styled-components
 ```
 
 
