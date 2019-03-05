@@ -12,6 +12,7 @@ Or alternatively via npm:
 npm i --save react-lazy-hero
 ```
 
+Note: You will also need to add `styled-components` a peer dependency for this framework to work.
 
 ## Basic Usage
 
