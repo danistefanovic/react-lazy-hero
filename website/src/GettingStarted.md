@@ -4,12 +4,12 @@
 ## Installation
 
 ```sh
-yarn add react-lazy-hero
+yarn add react-lazy-hero styled-components
 ```
 
 Or alternatively via npm:
 ```sh
-npm i --save react-lazy-hero
+npm i --save react-lazy-hero styled-components
 ```
 
 
