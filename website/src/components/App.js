@@ -15,6 +15,7 @@ function App(props) {
     return (
         <div className="App">
             <LazyHero
+                backgroundPositionY={props.knobs.backgroundPositionY.current}
                 className={props.knobs.className.current}
                 color={props.knobs.color.current}
                 imageSrc={props.knobs.imageSrc.current}
@@ -54,6 +55,10 @@ const enhance = compose(
     pure,
     withState('id', 'setId', 0),
     withState('knobs', 'setKnobs', {
+        backgroundPositionY: {
+            description: 'backgroundPositionY property on the image. Will override parallax effect.',
+            type: 'string',
+        },
         children: {
             current: '<Logo />',
             description: 'Child components',

@@ -159,7 +159,13 @@ class LazyHero extends Component {
                     imageHeight={backgroundDimensions && backgroundDimensions.height}
                     imageSrc={this.props.imageSrc}
                     imageWidth={backgroundDimensions && backgroundDimensions.width}
-                    style={{ backgroundPositionY }}
+                    style={{
+                        backgroundPositionY: (
+                            this.props.backgroundPositionY
+                                ? this.props.backgroundPositionY
+                                : backgroundPositionY
+                        ),
+                    }}
                     transitionDuration={this.props.transitionDuration}
                     transitionTimingFunction={this.props.transitionTimingFunction}
                 />
@@ -176,6 +182,7 @@ class LazyHero extends Component {
 }
 
 LazyHero.defaultProps = {
+    backgroundPositionY: undefined,
     children: undefined,
     className: undefined,
     color: '#fff',
@@ -191,6 +198,7 @@ LazyHero.defaultProps = {
 };
 
 LazyHero.propTypes = {
+    backgroundPositionY: PropTypes.string,
     children: PropTypes.node,
     className: PropTypes.string,
     color: PropTypes.string,
